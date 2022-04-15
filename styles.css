@@ -240,7 +240,7 @@ p{
         position: fixed;
         border: none;
         background-color: white;
-        padding: 20px 35px ;
+        padding: 20px 20px ;
         width: 100vw;
         z-index: 10;
     }
@@ -323,7 +323,7 @@ p{
 
     /* !======== right =========== */
     .right{
-        padding: 0 35px;
+        padding: 0 20px;
         width: 100%;
     }
     h1{
