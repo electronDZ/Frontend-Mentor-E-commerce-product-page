@@ -1,13 +1,21 @@
 const thumbnail = document.querySelectorAll(".thumbnail")
 const image = document.querySelector(".product-pic")
+const controlBtn = document.querySelectorAll(".counter-btn")
+const counter =  document.querySelector(".cpt")
+const navToggleBtn = document.querySelectorAll(".nav-btn")
 
-img = '<img src="images/image-product-2.jpg" class="product-pic">'
 
+// ! number item counter
+var cpt = 0
+
+// ! change Pic function
 function changePic(dataIndex){
     let src = `images/image-product-${dataIndex}.jpg`
     image.src = src
 }
 
+
+// ! thumbnail Click To Change
 thumbnail.forEach(thmb => {
     thmb.addEventListener("click",()=>{
         console.log(thmb.dataset.index)
@@ -18,5 +26,29 @@ thumbnail.forEach(thmb => {
             thmb1.classList.remove("active-pic")
         })
         thmb.classList.add("active-pic")
+    })
+})
+
+// ! Increase & Decrease item numbers
+controlBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        if (btn.innerText === "+") {
+            cpt++
+            counter.innerText = `${cpt}`
+        }else if (btn.innerText === "-") {
+            if (cpt > 0) {
+                cpt--
+                counter.innerText = `${cpt}`
+            }
+        }
+    })
+})
+
+// ! toggle Nav-bar
+const nav = document.querySelector("nav")
+navToggleBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        console.log("one of nav btns clicked")
+        nav.classList.toggle("active-nav")
     })
 })
