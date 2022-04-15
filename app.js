@@ -52,3 +52,30 @@ navToggleBtn.forEach(btn => {
         nav.classList.toggle("active-nav")
     })
 })
+
+
+// ! mobile picture navigatour
+let picCpt = 1;
+
+const picBtn = document.querySelectorAll(".pic-btn")
+picBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        if (btn === picBtn[0]) {
+            if (picCpt > 1) {
+                picCpt--
+            }else if(picCpt === 1){
+                picCpt = 4
+            }
+            changePic(picCpt)
+            
+        }else if(btn === picBtn[1]){
+            if (picCpt < 4) {
+                picCpt++
+                
+            }else if(picCpt === 4){
+                picCpt = 1
+            }
+            changePic(picCpt)
+        }
+    })
+})
