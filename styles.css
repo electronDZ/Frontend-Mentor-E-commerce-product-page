@@ -211,6 +211,9 @@ p{
     font-size: 1.1rem;
     letter-spacing: 1.2px;
 }
+.add-to-card i{
+    margin-right: 20px;
+}
 
 
 /* ! ======== actions ========= */
@@ -219,19 +222,17 @@ p{
     border: 3px solid var(--orange);
     opacity: .7;
 }
-
-
-
+.navigate-picturs{
+    display: none;
+}
 /* ! ========= mobile ========== */
 @media only screen and (max-width: 600px) {
 
     /* !======== Main ======== */
     main{
         padding: 0 0;
-        overflow: hidden;
-        position: relative;
-        overflow-y: scroll;
-        overflow-x: scroll;
+        height: auto;
+        width: auto;
     }
 
     /* !========== Responsive Nav Bar ============= */
@@ -241,6 +242,7 @@ p{
         background-color: white;
         padding: 20px 35px ;
         width: 100vw;
+        z-index: 10;
     }
     
     .avatar{
@@ -263,7 +265,7 @@ p{
         position: fixed;
         top: 0;
         left: -70vw;
-        z-index: 100;
+        z-index: 2;
         background-color: white;
         transition: .5s ease-out;
     }
@@ -296,7 +298,7 @@ p{
     /* !=========== .main ======== */
     #main{
         display: block;
-        /* padding: 0 30px; */
+        margin: 0;
         margin-top: 7%;
         width: 100vw;
     }
@@ -304,6 +306,8 @@ p{
     /* !======== left =========== */
     .left{
         width: 100%;
+        position: relative;
+        /* z-index: -10; */
     }
     .product-pic{
         border-radius: 0;
@@ -374,4 +378,30 @@ p{
         align-items: center;
         padding: 0 20px;
     }
+
+    .navigate-picturs{
+        padding: 0 30px;
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        /* z-index: 10000; */
+    }
+    .pic-btn{
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.47);
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        /* z-index: 2000; */
+    }
+    ion-icon{
+        cursor: pointer;
+    }
+
 }
