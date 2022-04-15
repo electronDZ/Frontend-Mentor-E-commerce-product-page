@@ -315,7 +315,7 @@ p{
     .product-pic{
         border-radius: 0;
         cursor: default;
-        margin-bottom: 25px;
+        margin: 40px 0;
     }
     .product-list{
         display: none;
@@ -389,8 +389,8 @@ p{
         width: 100%;
     }
     .pic-btn{
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         background-color: rgba(255, 255, 255, 0.47);
         border-radius: 50%;
         text-align: center;
