@@ -113,9 +113,24 @@ function addToCart(){
     }
 }
     
+const main = document.querySelector("main")
+function hideCart(){
+    main.addEventListener("mouseup", () => {
+        cart.classList.remove("active")
+        if (cart.classList.contains("active")) {
+        }
+    })
+}
+hideCart()
     
-    
-    
-    
+
+
+
+
+
+console.log(cart.classList.contains("active"))
+
+
+
 addBtn.addEventListener("click", addToCart)
 
