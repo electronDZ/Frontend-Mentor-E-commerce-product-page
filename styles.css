@@ -48,10 +48,16 @@ main{
 .avatar{
     width: 60px;
     margin-left: 50px;
+    border: 3px solid transparent;
     cursor: pointer;
+}
+.avatar:hover{
+    border: 3px solid var(--orange);
+    border-radius: 50%;
 }
 
 header{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,12 +123,15 @@ nav ul li a:hover{
     border-radius: 10%;
     cursor: pointer;
 }
+.thumbnail:hover{
+    opacity: .7;
+}
 
 
 /* ! ============== right ========== */
 
 
-h3{
+.right h3{
     text-transform: uppercase;
     font-size: .9rem;
     color: var(--orange);
@@ -213,6 +222,9 @@ p{
 }
 .add-to-card i{
     margin-right: 20px;
+}
+.add-to-card:hover{
+    opacity: .9;
 }
 
 
@@ -400,5 +412,90 @@ p{
         cursor: pointer;
     }
 
+    /*! ======= responsive cart ========= */
 
+    .cart-container{
+        width: 90vw;
+        height: 250px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        margin-top: 120px;
+    }
+}
+
+/* !========= cart ======= */
+.header-right{
+    position: relative;
+}
+.header-right h5{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: white;
+    background-color: var(--orange);
+    padding: 1px 7px;
+    border-radius: 5px;
+    font-size: .6rem;
+}
+
+
+.cart-container{
+    position: absolute;
+    display: none;
+    width: 350px;
+    height: 250px;
+    top: 100px;
+    right: -60px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: -3px 9px 22px 10px rgba(0, 0, 0, 0.173);
+    transition: .5s;
+}
+.active{
+    display: block !important;
+}
+.hidden{
+    display: none !important;
+}
+.cart-header-name{
+    color: black;
+    font-weight: 700;
+    padding: 22px;
+}
+
+.cart-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 7px;
+}
+.empty-cart{
+    color: rgb(94, 94, 94);
+    font-weight: 700;
+    padding: 0;
+    margin: 65px auto;
+}
+.add-to-card.checkout{
+    color: white;
+}
+
+.product-img{
+    width: 60px;
+    border-radius: 5px;
+}
+.product-title p{
+    letter-spacing: 1px;
+    color: var(--grayish-blue);
+    margin-bottom: 0;
+    margin-left: 20px;
+    line-height: 1.9;
+}
+.product-selected{
+    display: flex;
+    align-items: center;
+    margin: 0 10px 40px;
+}
+.total{
+    font-weight: 700;
 }
