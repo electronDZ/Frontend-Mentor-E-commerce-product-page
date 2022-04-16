@@ -84,8 +84,10 @@ picBtn.forEach(btn => {
 
 
 //! toggle cart 
-
+let isTrue = false
 cartBtn.addEventListener("click", () => {
+    hideCart(isTrue)
+    isTrue =true
     cart.classList.toggle("active")
 })
 
@@ -114,14 +116,19 @@ function addToCart(){
 }
     
 const main = document.querySelector("main")
-function hideCart(){
+
+function hideCart(isTrue){
+  if (isTrue){
     main.addEventListener("mouseup", () => {
-        cart.classList.remove("active")
+        
         if (cart.classList.contains("active")) {
+          isTrue = false
+          cart.classList.remove("active")
         }
     })
+  }
+    
 }
-hideCart()
     
 
 
@@ -133,4 +140,3 @@ console.log(cart.classList.contains("active"))
 
 
 addBtn.addEventListener("click", addToCart)
-
