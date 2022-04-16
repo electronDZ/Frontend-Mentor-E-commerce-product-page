@@ -6,6 +6,7 @@ const navToggleBtn = document.querySelectorAll(".nav-btn")
 const cart = document.querySelector(".cart-container")
 const cartBtn = document.querySelector(".header-icon")
 const addBtn = document.querySelector(".addBtn")
+const deleteItemBtn = document.querySelector(".delete-icon")
 
 
 // ! number item counter
@@ -62,6 +63,7 @@ let picCpt = 1;
 const picBtn = document.querySelectorAll(".pic-btn")
 picBtn.forEach(btn => {
     btn.addEventListener("click", () => {
+        hideCart()
         if (btn === picBtn[0]) {
             if (picCpt > 1) {
                 picCpt--
@@ -84,14 +86,20 @@ picBtn.forEach(btn => {
 
 
 //! toggle cart 
-let isTrue = false
-cartBtn.addEventListener("click", () => {
-    hideCart(isTrue)
-    isTrue =true
-    cart.classList.toggle("active")
-})
+//? toggle cart fuction 
+function toggleCart(){
+    cartBtn.addEventListener("click", () => {
+        cart.classList.toggle("active")
+    })
+}
+//?hide cart  function
+function hideCart(){
+    cart.classList.remove("active")
+}
+toggleCart()
 
 //! adding to cart 
+
 
 const emptyText = document.querySelector(".empty-cart"),
       checkOutBtn = document.querySelector(".checkout"),
@@ -101,10 +109,10 @@ const emptyText = document.querySelector(".empty-cart"),
       total = document.querySelector(".total")
 
 
+var cptUser 
 function addToCart(){
-    let cptUser = cpt
-    if(parseInt(counter.innerText) > 0){
-        console.log(cpt)
+    cptUser = cpt
+    if(parseInt(cptUser) > 0){
         emptyText.classList.add("hidden")
         checkOutBtn.classList.remove("hidden")
         products.classList.remove("hidden")
@@ -114,29 +122,37 @@ function addToCart(){
         total.innerText = "  "+"$"+(cptUser*125)+(".00")
     }
 }
-    
-const main = document.querySelector("main")
-
-function hideCart(isTrue){
-  if (isTrue){
-    main.addEventListener("mouseup", () => {
-        
-        if (cart.classList.contains("active")) {
-          isTrue = false
-          cart.classList.remove("active")
-        }
-    })
-  }
-    
-}
-    
-
-
-
-
-
-console.log(cart.classList.contains("active"))
-
-
 
 addBtn.addEventListener("click", addToCart)
+
+//? update itemNum & empty cart
+function updateNum(){
+    cptUser--
+    if (cptUser===0) {
+        emptyText.classList.remove("hidden")
+        checkOutBtn.classList.add("hidden")
+        products.classList.add("hidden")
+        itemNmbr.classList.add("hidden")
+    }else{
+        emptyText.classList.add("hidden")
+        checkOutBtn.classList.remove("hidden")
+        products.classList.remove("hidden")
+        itemNmbr.classList.remove("hidden")
+        itemNmbr.innerText = `${cptUser}`
+        cpt1.innerHTML = `${cptUser}`
+        total.innerText = "  "+"$"+(cptUser*125)+(".00")
+    }
+}
+
+
+//! delete items
+
+deleteItemBtn.addEventListener("click", () => {
+    console.log(cptUser)
+    updateNum()
+})
+
+
+
+
+
