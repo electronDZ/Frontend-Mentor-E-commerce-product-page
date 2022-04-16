@@ -422,7 +422,7 @@ p{
         transform: translate(-50%,-50%);
         margin-top: 120px;
     }
-     .header-right h5{
+    .header-right h5{
         top: 0 !important;
     }
 }
@@ -493,6 +493,10 @@ p{
     margin-bottom: 0;
     margin-left: 20px;
     line-height: 1.9;
+}
+.delete-icon{
+    margin-left: 40px;
+    cursor: pointer;
 }
 .product-selected{
     display: flex;
