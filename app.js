@@ -7,6 +7,8 @@ const cart = document.querySelector(".cart-container")
 const cartBtn = document.querySelector(".header-icon")
 const addBtn = document.querySelector(".addBtn")
 const deleteItemBtn = document.querySelector(".delete-icon")
+const toggleLBbtns = document.querySelectorAll(".LB_btn")
+const lightBox = document.querySelector("#lightbox")
 
 
 // ! number item counter
@@ -63,8 +65,8 @@ let picCpt = 1;
 const picBtn = document.querySelectorAll(".pic-btn")
 picBtn.forEach(btn => {
     btn.addEventListener("click", () => {
-        hideCart()
         if (btn === picBtn[0]) {
+            console.log("previeususis button clicked")
             if (picCpt > 1) {
                 picCpt--
             }else if(picCpt === 1){
@@ -73,6 +75,8 @@ picBtn.forEach(btn => {
             changePic(picCpt)
             
         }else if(btn === picBtn[1]){
+            console.log("next button clicked")
+
             if (picCpt < 4) {
                 picCpt++
                 
@@ -152,7 +156,71 @@ deleteItemBtn.addEventListener("click", () => {
     updateNum()
 })
 
+//! ==========light box ========= 
+
+// ? lightbox toggle
+
+toggleLBbtns.forEach(btn => {
+    btn.addEventListener("click" , () => lightBox.classList.toggle("hidden"))
+})
 
 
 
+// ! Gallery thumbnail Click To Change
+const galleryThumbnail = document.querySelectorAll(".gallery-thumbnail")
+const GalleryImage = document.querySelector(".gallery-product-pic")
+let GalleryImageIndex =1;
 
+galleryThumbnail.forEach(thmb => {
+    thmb.addEventListener("click",()=>{
+        let src = `images/image-product-${thmb.dataset.index}.jpg`
+        GalleryImage.src = src
+        galleryThumbnail.forEach(thmb1 => thmb1.classList.remove("active-pic"))
+        thmb.classList.add("active-pic")
+        GalleryImageIndex = thmb.dataset.index
+    })
+})
+
+
+// ! change Gallery Pic function
+function changeGalleryPic(dataIndex){
+    let src = `images/image-product-${dataIndex}.jpg`
+    GalleryImage.src = src
+}
+
+// ! LightBox picture navigatour
+
+const GallerypicBtn = document.querySelectorAll(".gallery-btn")
+GallerypicBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        console.log("before clicke",GalleryImageIndex)
+        if (btn === GallerypicBtn[0]) {
+            if (GalleryImageIndex > 1) {
+                GalleryImageIndex--
+                refreshActiveGalleryThumbnail(GalleryImageIndex)
+            }else if(GalleryImageIndex === 1){
+                GalleryImageIndex = 4
+                refreshActiveGalleryThumbnail(GalleryImageIndex)
+            }
+            changeGalleryPic(GalleryImageIndex)
+            
+        }else if(btn === GallerypicBtn[1]){
+            if (GalleryImageIndex < 4) {
+                GalleryImageIndex++
+                refreshActiveGalleryThumbnail(GalleryImageIndex)
+                
+            }else if(GalleryImageIndex === 4){
+                GalleryImageIndex = 1
+                refreshActiveGalleryThumbnail(GalleryImageIndex)
+            }
+            changeGalleryPic(GalleryImageIndex)
+        }
+        console.log("after clicke",GalleryImageIndex)
+    })
+})
+
+// refresh  Active gallery thumbail pic
+function refreshActiveGalleryThumbnail(GalleryImageIndex){
+    galleryThumbnail.forEach(thmb1 => thmb1.classList.remove("active-pic"))
+    galleryThumbnail[GalleryImageIndex-1].classList.add("active-pic")
+}
