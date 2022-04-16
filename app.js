@@ -3,6 +3,9 @@ const image = document.querySelector(".product-pic")
 const controlBtn = document.querySelectorAll(".counter-btn")
 const counter =  document.querySelector(".cpt")
 const navToggleBtn = document.querySelectorAll(".nav-btn")
+const cart = document.querySelector(".cart-container")
+const cartBtn = document.querySelector(".header-icon")
+const addBtn = document.querySelector(".addBtn")
 
 
 // ! number item counter
@@ -22,12 +25,11 @@ thumbnail.forEach(thmb => {
         let src = `images/image-product-${thmb.dataset.index}.jpg`
         console.log(src)
         image.src = src
-        thumbnail.forEach(thmb1 => {
-            thmb1.classList.remove("active-pic")
-        })
+        thumbnail.forEach(thmb1 => thmb1.classList.remove("active-pic"))
         thmb.classList.add("active-pic")
     })
 })
+
 
 // ! Increase & Decrease item numbers
 controlBtn.forEach(btn => {
@@ -79,3 +81,41 @@ picBtn.forEach(btn => {
         }
     })
 })
+
+
+//! toggle cart 
+
+cartBtn.addEventListener("click", () => {
+    cart.classList.toggle("active")
+})
+
+//! adding to cart 
+
+const emptyText = document.querySelector(".empty-cart"),
+      checkOutBtn = document.querySelector(".checkout"),
+      products = document.querySelector(".product-selected"),
+      itemNmbr = document.querySelector(".itemNmbr"),
+      cpt1 = document.querySelector(".cpt1"),
+      total = document.querySelector(".total")
+
+
+function addToCart(){
+    let cptUser = cpt
+    if(parseInt(counter.innerText) > 0){
+        console.log(cpt)
+        emptyText.classList.add("hidden")
+        checkOutBtn.classList.remove("hidden")
+        products.classList.remove("hidden")
+        itemNmbr.classList.remove("hidden")
+        itemNmbr.innerText = `${cptUser}`
+        cpt1.innerHTML = `${cptUser}`
+        total.innerText = "  "+"$"+(cptUser*125)+(".00")
+    }
+}
+    
+    
+    
+    
+    
+addBtn.addEventListener("click", addToCart)
+
